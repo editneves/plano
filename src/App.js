@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import RoutersComponents from "./RoutersComponents"
+import { AuthContext } from "../src/components/AuthContext";
+import { useState } from "react";
+import Home from "./pages/Home";
+//import Cadastro from "./pages/Cadastro";
+//import Planos from "./pages/Planos";
 
-function App() {
+export default function App() {
+  const [token, setToken] = useState({});
+  const [form, setForm] = useState({
+    email: "",
+    password: ""
+  });
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{form, setForm, token, setToken}}>
+      <Container>
+        {/* <Planos /> */}
+        {/* <Home />  */}
+        {/*  <Cadastro />*/}
+        <RoutersComponents/>  
+      </Container>
+    </AuthContext.Provider>
   );
 }
 
-export default App;
+const Container = styled.div`
+  width: 375px;
+  height: 667px;
+  background: #0e0e13;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+`;
