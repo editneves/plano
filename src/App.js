@@ -2,25 +2,24 @@ import styled from "styled-components";
 import RoutersComponents from "./RoutersComponents"
 import { AuthContext } from "../src/components/AuthContext";
 import { useState } from "react";
-import Home from "./pages/Home";
-//import Cadastro from "./pages/Cadastro";
-//import Planos from "./pages/Planos";
 
 export default function App() {
-  const [token, setToken] = useState({});
+  const [user, setUser] = useState({});
   const [form, setForm] = useState({
+    email: '',
+    password: ''
+  });
+  const [cadastro, setCadastro] = useState({
     email: "",
+    name: "",
+    cpf: "",
     password: ""
   });
   
-  
   return (
-    <AuthContext.Provider value={{form, setForm, token, setToken}}>
+    <AuthContext.Provider value={{form, setForm, user, setUser,cadastro, setCadastro}}>
       <Container>
-        {/* <Planos /> */}
-        {/* <Home />  */}
-        {/*  <Cadastro />*/}
-        <RoutersComponents/>  
+        <RoutersComponents/>
       </Container>
     </AuthContext.Provider>
   );

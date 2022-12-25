@@ -1,23 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
 import axios from "axios";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Base_URL } from "../constants/urls";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { AuthContext } from "../components/AuthContext";
 
 export default function Cadastro() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { cadastro, setCadastro } = useContext(AuthContext);
 
-  const [form, setForm] = useState({
-    email: "",
-    name: "",
-    cpf: "",
-    password: ""
-  });
-
-  function handleForm(e) {
-    setForm({
-      ...form,
+  function handleCadastro(e) {
+    setCadastro({
+      ...cadastro,
       [e.target.name]: e.target.value,
     });
   }
@@ -25,14 +20,11 @@ export default function Cadastro() {
   function fazerCadastro(e) {
     e.preventDefault(); // impede o redirecionamento
 
-    const requisicao = axios.post(`${Base_URL}/sign-up`, {
-      form,
-    });
+    const requisicao = axios.post(`${Base_URL}/sign-up`, cadastro);
 
-    // se der tudo certo com a requisição, vai para a página home
     requisicao.then((req) => {
-      console.log(req.data);
-      //navigate("/subscriptions");
+      setCadastro(req.data);
+      navigate("/");
     });
 
     requisicao.catch((err) => {
@@ -48,16 +40,16 @@ export default function Cadastro() {
             type="email"
             name="email"
             placeholder="E-mail"
-            onChange={handleForm}
-            value={form.email}
+            onChange={handleCadastro}
+            value={cadastro.email}
             required
           />
           <input
             type="name"
             name="name"
             placeholder="Nome"
-            onChange={handleForm}
-            value={form.name}
+            onChange={handleCadastro}
+            value={cadastro.name}
             required
           />
 
@@ -65,8 +57,8 @@ export default function Cadastro() {
             type="cpf"
             name="cpf"
             placeholder="CPF"
-            onChange={handleForm}
-            value={form.cpf}
+            onChange={handleCadastro}
+            value={cadastro.cpf}
             required
           />
 
@@ -74,17 +66,19 @@ export default function Cadastro() {
             type="password"
             name="password"
             placeholder="senha"
-            onChange={handleForm}
-            value={form.password}
+            onChange={handleCadastro}
+            value={cadastro.password}
             required
           />
 
           <button type="submit">CADASTRAR</button>
         </form>
 
-        {/* <Link to="/cadastro">*/}
-        <TextLink>Já possuí uma conta? Entre</TextLink>
-        {/* </Link> */}
+        <Div>
+          <Link to="/">
+            <TextLink>Já possuí uma conta? Entre</TextLink>
+          </Link>
+        </Div>
       </Container>
     </>
   );
@@ -125,7 +119,6 @@ const Container = styled.div`
 `;
 
 const TextLink = styled.label`
-  margin-top: 20px;
   text-align: center;
   text-decoration-line: underline;
   font-family: "Roboto";
@@ -135,4 +128,13 @@ const TextLink = styled.label`
   line-height: 16px;
   text-decoration-line: underline;
   color: #ffffff;
+`;
+
+const Div = styled.div`
+  margin-top:20px;
+  width: 299px;
+  height: 16px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 `;
