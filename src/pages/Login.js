@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import axios from "axios";
-import Logo from "../img/logo.png";
-import { Base_URL } from "../constants/urls";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import React, { useContext } from "react";
-import { AuthContext } from "../components/AuthContext";
+import styled from 'styled-components'
+import axios from 'axios'
+import Logo from '../img/logo.png'
+import { Base_URL } from '../constants/urls'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { AuthContext } from '../components/AuthContext'
+import Container from '../components/Container'
 
 export default function Login() {
   const navigate = useNavigate();
@@ -78,40 +79,6 @@ export default function Login() {
   );
 }
 
-const Container = styled.div`
-  width: 299px;
-  height: 420px;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    margin-bottom: 100px;
-    width: 299px;
-    height: 49px;
-    left: 38px;
-    top: 134px;
-  }
-  input {
-    margin-top: 16px;
-    width: 299px;
-    height: 52px;
-    background: #ffffff;
-    border-radius: 8px;
-  }
-  button {
-    margin-top: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 122px;
-    gap: 10px;
-    width: 299px;
-    height: 52px;
-    background: #ff4791;
-    border-radius: 8px;
-  }
-`;
-
 const TextLink = styled.label`
   margin-top: 20px;
   text-align: center;
@@ -123,7 +90,8 @@ const TextLink = styled.label`
   line-height: 16px;
   text-decoration-line: underline;
   color: #ffffff;
-`;
+`
+
 const Div = styled.div`
   margin-top: 20px;
   width: 299px;
@@ -131,4 +99,4 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
