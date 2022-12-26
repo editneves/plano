@@ -1,18 +1,15 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
 import { useEffect } from "react";
 import React, { useContext } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
-  const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
   const [planos, setPlanos] = useState([]);
-  console.log(planos);
-  console.log(user.token);
 
   useEffect(() => {
     const promise = axios.get(
@@ -35,17 +32,21 @@ export default function Cadastro() {
 
       {planos.map(function (plano) {
         return (
-          <Container
-            onClick={() => { window.location.href = `/subscriptions/${plano.id}`}}
-          >
+          <Link style={{ textDecoration: 'none', color: "white" }} to={`/subscriptions/${plano.id}`}>
+          <Container>
             <img src={plano.image} />
-            <p key={plano.id}>{plano.price}</p>;
+            <p key={plano.id}>{plano.price}</p>
           </Container>
+          </Link>
         );
       })}
     </>
   );
 }
+
+
+
+
 
 const Text = styled.label`
   font-family: "Roboto";
