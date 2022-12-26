@@ -24,14 +24,25 @@ const PlanSignature = () => {
             required
           />
 
-          <input
-            type="text"
-            name="secutiry-code"
-            placeholder="Código de segurança"
-            required
-          />
+          <div className="custom-row">
+            <input
+              className="custom-input"
+              type="text"
+              name="secutiry-code"
+              placeholder="Código de segurança"
+              required
+            />
 
-          <input type="text" name="validity" placeholder="Validade" required />
+            <input
+              className="custom-input"
+              type="text"
+              name="validity"
+              placeholder="Validade"
+              required
+            />
+          </div>
+
+          <button type="submit">ASSINAR</button>
         </form>
       </Container>
     </>

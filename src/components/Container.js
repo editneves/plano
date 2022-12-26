@@ -13,6 +13,7 @@ const Container = styled.div`
     left: 38px;
     top: 134px;
   }
+
   input {
     margin-top: 16px;
     width: 299px;
@@ -20,6 +21,21 @@ const Container = styled.div`
     background: #ffffff;
     border-radius: 8px;
   }
+
+  .custom-row {
+    display: flex;
+    flex-direction: row;
+    width: 307px;
+    justify-content: space-between;
+  }
+
+  .custom-input {
+    width: 140px;
+    height: 52px;
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
   button {
     margin-top: 24px;
     display: flex;
