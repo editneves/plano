@@ -31,12 +31,7 @@ const PlanSignature = () => {
             required
           />
 
-          <input
-            type="text"
-            name="validity"
-            placeholder="Validade"
-            required
-          />
+          <input type="text" name="validity" placeholder="Validade" required />
         </form>
       </Container>
     </>

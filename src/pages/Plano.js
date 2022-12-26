@@ -10,7 +10,7 @@ const Plano = () => {
       <h2>ID: {id}</h2>
       <PlanSignature />
     </>
-  );
-};
+  )
+}
 
 export default Plano

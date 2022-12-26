@@ -9,37 +9,37 @@ import { AuthContext } from '../components/AuthContext'
 import Container from '../components/Container'
 
 export default function Login() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { form, setForm } = useContext(AuthContext);
-  const { setUser } = useContext(AuthContext);
+  const { form, setForm } = useContext(AuthContext)
+  const { setUser } = useContext(AuthContext)
 
   function handleForm(e) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-    });
+    })
   }
 
   function fazerLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const requisicao = axios.post(`${Base_URL}/login`, form);
+    const requisicao = axios.post(`${Base_URL}/login`, form)
 
     requisicao.then((req) => {
-      const user = req.data;
-      setUser(user);
+      const user = req.data
+      setUser(user)
 
       if (user.membership === null) {
-        navigate("/subscriptions");
+        navigate('/subscriptions')
       } else {
-        navigate("/");
+        navigate('/')
       }
-    });
+    })
 
     requisicao.catch((err) => {
-      alert(err.response.data.message);
-    });
+      alert(err.response.data.message)
+    })
   }
 
   return (
@@ -76,14 +76,14 @@ export default function Login() {
         </Div>
       </Container>
     </>
-  );
+  )
 }
 
 const TextLink = styled.label`
   margin-top: 20px;
   text-align: center;
   text-decoration-line: underline;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
