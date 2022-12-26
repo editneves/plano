@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { Base_URL } from '../constants/urls'
+import { BASE_URL } from '../constants/urls'
 import { Link } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { AuthContext } from '../components/AuthContext'
@@ -20,7 +20,7 @@ export default function Cadastro() {
   const fazerCadastro = (e) => {
     e.preventDefault()
 
-    const requisicao = axios.post(`${Base_URL}/sign-up`, cadastro)
+    const requisicao = axios.post(`${BASE_URL}/auth/sign-up`, cadastro)
 
     requisicao.then((req) => {
       setCadastro(req.data)

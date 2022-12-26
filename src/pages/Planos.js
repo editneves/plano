@@ -4,19 +4,17 @@ import { AuthContext } from '../components/AuthContext'
 import { useEffect } from 'react'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../constants/urls'
 
 export default function Cadastro() {
   const { planos, setPlanos } = useContext(AuthContext)
 
   useEffect(() => {
-    const promise = axios.get(
-      `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + window.localStorage.getItem('token'),
-        },
+    const promise = axios.get(`${BASE_URL}/subscriptions/memberships`, {
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
       },
-    )
+    })
 
     promise.then((res) => {
       setPlanos(res.data)

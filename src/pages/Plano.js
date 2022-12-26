@@ -7,6 +7,8 @@ import { AuthContext } from '../components/AuthContext'
 import perks from '../img/perks.png'
 import price from '../img/price.png'
 import { useNavigate } from 'react-router-dom'
+import PlanSignature from '../components/PlanSignature'
+import { BASE_URL } from '../constants/urls'
 
 export default function Cadastro() {
   const { plano, setPlano } = useContext(AuthContext)
@@ -15,7 +17,7 @@ export default function Cadastro() {
 
   useEffect(() => {
     const promise = axios.get(
-      `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships/${planoId}`,
+      `${BASE_URL}/subscriptions/memberships/${planoId}`,
       {
         headers: {
           Authorization: 'Bearer ' + window.localStorage.getItem('token'),
@@ -61,6 +63,7 @@ export default function Cadastro() {
           </Div>
           <Div>R$ {plano.price} cobrados mensalmente</Div>
         </Box>
+        <PlanSignature />
       </Container>
     </>
   )

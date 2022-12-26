@@ -1,18 +1,15 @@
 import styled from 'styled-components'
 import axios from 'axios'
 import Logo from '../img/logo.png'
-import { Base_URL } from '../constants/urls'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { BASE_URL } from '../constants/urls'
+import { useNavigate, Link } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { AuthContext } from '../components/AuthContext'
 import Container from '../components/Container'
 
 const Login = () => {
   const navigate = useNavigate()
-
-  const { form, setForm } = useContext(AuthContext)
-  const { setUser } = useContext(AuthContext)
+  const { form, setForm, setUser } = useContext(AuthContext)
 
   const handleForm = (e) => {
     setForm({
@@ -24,7 +21,7 @@ const Login = () => {
   const fazerLogin = (e) => {
     e.preventDefault()
 
-    const requisicao = axios.post(`${Base_URL}/login`, form)
+    const requisicao = axios.post(`${BASE_URL}/auth/login`, form)
 
     requisicao.then((req) => {
       const user = req.data

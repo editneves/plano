@@ -4,16 +4,23 @@ import { AuthContext } from '../src/components/AuthContext'
 import { useState } from 'react'
 
 export default function App() {
+  const [form, setForm] = useState({ email: '', password: '' })
+  const [cadastro, setCadastro] = useState({
+    email: '',
+    name: '',
+    cpf: '',
+    password: '',
+  })
+
+  const [creditCard, setCreditCard] = useState({
+    membershipId: 0,
+    cardName: '',
+    cardNumber: '',
+    securityNumber: '',
+    expirationDate: '',
+  })
+
   const [user, setUser] = useState(null)
-  const [form, setForm] = useState({email: '', password: ''})
-  const [cadastro, setCadastro] = useState(
-    {
-      email: '',
-      name: '',
-      cpf: '',
-      password: ''
-    }
-  )
   const [planos, setPlanos] = useState(null)
   const [plano, setPlano] = useState(null)
 
@@ -30,6 +37,8 @@ export default function App() {
         setPlanos,
         plano,
         setPlano,
+        creditCard,
+        setCreditCard,
       }}
     >
       <Container>
