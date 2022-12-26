@@ -1,8 +1,9 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 299px;
-  height: 420px;
+  height: auto;
+  margin-bottom:34px;
   display: flex;
   flex-direction: column;
 
@@ -47,7 +48,14 @@ const Container = styled.div`
     height: 52px;
     background: #ff4791;
     border-radius: 8px;
-  }
-`
+    p{
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      color: #FFFFFF;
+    }
+`;
 
-export default Container
+export default Container;
