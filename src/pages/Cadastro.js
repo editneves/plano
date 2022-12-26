@@ -1,35 +1,35 @@
-import styled from "styled-components";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Base_URL } from "../constants/urls";
-import { Link } from "react-router-dom";
-import React, { useContext } from "react";
-import { AuthContext } from "../components/AuthContext";
+import styled from 'styled-components'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { Base_URL } from '../constants/urls'
+import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { AuthContext } from '../components/AuthContext'
 
 export default function Cadastro() {
-  const navigate = useNavigate();
-  const { cadastro, setCadastro } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const { cadastro, setCadastro } = useContext(AuthContext)
 
-  function handleCadastro(e) {
+  const handleCadastro = (e) => {
     setCadastro({
       ...cadastro,
       [e.target.name]: e.target.value,
-    });
+    })
   }
 
-  function fazerCadastro(e) {
-    e.preventDefault(); // impede o redirecionamento
+  const fazerCadastro = (e) => {
+    e.preventDefault()
 
-    const requisicao = axios.post(`${Base_URL}/sign-up`, cadastro);
+    const requisicao = axios.post(`${Base_URL}/sign-up`, cadastro)
 
     requisicao.then((req) => {
-      setCadastro(req.data);
-      navigate("/");
-    });
+      setCadastro(req.data)
+      navigate('/')
+    })
 
     requisicao.catch((err) => {
-      alert(err.response.data.message);
-    });
+      alert(err.response.data.message)
+    })
   }
 
   return (
@@ -81,7 +81,7 @@ export default function Cadastro() {
         </Div>
       </Container>
     </>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -116,25 +116,25 @@ const Container = styled.div`
     background: #ff4791;
     border-radius: 8px;
   }
-`;
+`
 
 const TextLink = styled.label`
   text-align: center;
   text-decoration-line: underline;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   text-decoration-line: underline;
   color: #ffffff;
-`;
+`
 
 const Div = styled.div`
-  margin-top:20px;
+  margin-top: 20px;
   width: 299px;
   height: 16px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-`;
+`

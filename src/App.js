@@ -1,28 +1,44 @@
-import styled from "styled-components";
-import RoutersComponents from "./RoutersComponents"
-import { AuthContext } from "../src/components/AuthContext";
-import { useState } from "react";
+import styled from 'styled-components'
+import RoutersComponents from './RoutersComponents'
+import { AuthContext } from '../src/components/AuthContext'
+import { useState } from 'react'
 
 export default function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
   const [form, setForm] = useState({
     email: '',
-    password: ''
-  });
+    password: '',
+  })
   const [cadastro, setCadastro] = useState({
-    email: "",
-    name: "",
-    cpf: "",
-    password: ""
-  });
-  
+    email: '',
+    name: '',
+    cpf: '',
+    password: '',
+  })
+
+  const [planos, setPlanos] = useState([])
+  const [plano, setPlano] = useState({})
+
   return (
-    <AuthContext.Provider value={{form, setForm, user, setUser,cadastro, setCadastro}}>
+    <AuthContext.Provider
+      value={{
+        form,
+        setForm,
+        user,
+        setUser,
+        cadastro,
+        setCadastro,
+        planos,
+        setPlanos,
+        plano,
+        setPlano,
+      }}
+    >
       <Container>
-        <RoutersComponents/>
+        <RoutersComponents />
       </Container>
     </AuthContext.Provider>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -35,4 +51,4 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   align-content: space-between;
-`;
+`

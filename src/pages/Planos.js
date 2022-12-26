@@ -1,61 +1,61 @@
-import styled from "styled-components";
-import axios from "axios";
-import { AuthContext } from "../components/AuthContext";
-import { useEffect } from "react";
-import React, { useContext } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import axios from 'axios'
+import { AuthContext } from '../components/AuthContext'
+import { useEffect } from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Cadastro() {
-
-  const { user } = useContext(AuthContext);
-  const [planos, setPlanos] = useState([]);
+  const { user, planos, setPlanos } = useContext(AuthContext)
 
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships`,
       {
-        headers: { Authorization: "Bearer " + user.token },
-      }
-    );
+        headers: { Authorization: 'Bearer ' + user.token },
+      },
+    )
+
     promise.then((res) => {
-      setPlanos(res.data);
-    });
+      setPlanos(res.data)
+    })
+
     promise.catch((err) => {
-      alert(err.response.data.message);
-    });
-  }, []);
+      alert(err.response.data.message)
+    })
+  }, [])
 
   return (
     <>
       <Text>Escolha seu Plano</Text>
 
-      {planos.map(function (plano) {
-        return (
-          <Link style={{ textDecoration: 'none', color: "white" }} to={`/subscriptions/${plano.id}`}>
-          <Container>
-            <img src={plano.image} />
-            <p key={plano.id}>{plano.price}</p>
-          </Container>
-          </Link>
-        );
-      })}
+      {planos &&
+        planos.map(function (plano) {
+          return (
+            <Link
+              style={{ textDecoration: 'none', color: 'white' }}
+              to={`/subscriptions/${plano.id}`}
+              key={plano.id}
+            >
+              <Container>
+                <img src={plano.image} alt="plan" />
+                <p key={plano.id}>{plano.price}</p>
+              </Container>
+            </Link>
+          )
+        })}
     </>
-  );
+  )
 }
 
-
-
-
-
 const Text = styled.label`
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 38px;
   color: #ffffff;
-`;
+`
 
 const Container = styled.div`
   width: 290px;
@@ -81,4 +81,4 @@ const Container = styled.div`
     font-size: 24px;
     line-height: 28px;
     color: #ffffff;
-`;
+`

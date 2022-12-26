@@ -8,20 +8,20 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../components/AuthContext'
 import Container from '../components/Container'
 
-export default function Login() {
+const Login = () => {
   const navigate = useNavigate()
 
   const { form, setForm } = useContext(AuthContext)
   const { setUser } = useContext(AuthContext)
 
-  function handleForm(e) {
+  const handleForm = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     })
   }
 
-  function fazerLogin(e) {
+  const fazerLogin = (e) => {
     e.preventDefault()
 
     const requisicao = axios.post(`${Base_URL}/login`, form)
@@ -100,3 +100,5 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export default Login
