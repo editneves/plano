@@ -3,7 +3,6 @@ import Container from './Container'
 const PlanSignature = () => {
   const assignToPlan = (e) => {
     e.preventDefault()
-    console.log('asdasdasdasd')
   }
 
   return (

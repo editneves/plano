@@ -9,15 +9,17 @@ import price from '../img/price.png'
 import { useNavigate } from 'react-router-dom'
 
 export default function Cadastro() {
-  const { user, plano, setPlano } = useContext(AuthContext)
+  const { plano, setPlano } = useContext(AuthContext)
   const { planoId } = useParams()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships/${planoId}`,
       {
-        headers: { Authorization: 'Bearer ' + user.token },
+        headers: {
+          Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+        },
       },
     )
 
@@ -26,12 +28,42 @@ export default function Cadastro() {
     })
 
     promise.catch((err) => {
-      // alert(err.response.data.message)
-      // navigate('/')
+      navigate('/')
     })
-  }, [setPlano])
+  }, [setPlano, planoId, navigate])
 
-  return <>{user.token}</>
+  if (!plano) return <></>
+
+  return (
+    <>
+      <Container key={plano.id}>
+        <img src={plano.image} alt="plan" />
+        <Text>{plano.name} </Text>
+        <Box>
+          <Div>
+            <Img src={perks} alt="perks" />
+            Benefícios:
+          </Div>
+
+          {plano.perks.map((p) => {
+            return (
+              <Div key={p.id}>
+                <Div>
+                  {p.id} -{p.title}
+                </Div>
+              </Div>
+            )
+          })}
+
+          <Div>
+            {' '}
+            <Img src={price} alt="price" /> Preço:{' '}
+          </Div>
+          <Div>R$ {plano.price} cobrados mensalmente</Div>
+        </Box>
+      </Container>
+    </>
+  )
 }
 
 const Text = styled.label`

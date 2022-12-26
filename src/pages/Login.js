@@ -29,6 +29,7 @@ const Login = () => {
     requisicao.then((req) => {
       const user = req.data
       setUser(user)
+      window.localStorage.setItem('token', user.token)
 
       if (user.membership === null) {
         navigate('/subscriptions')

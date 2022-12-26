@@ -6,13 +6,15 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Cadastro() {
-  const { user, planos, setPlanos } = useContext(AuthContext)
+  const { planos, setPlanos } = useContext(AuthContext)
 
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships`,
       {
-        headers: { Authorization: 'Bearer ' + user.token },
+        headers: {
+          Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+        },
       },
     )
 
@@ -23,14 +25,14 @@ export default function Cadastro() {
     promise.catch((err) => {
       alert(err.response.data.message)
     })
-  }, [])
+  }, [setPlanos])
 
   return (
     <>
       <Text>Escolha seu Plano</Text>
 
       {planos &&
-        planos.map(function (plano) {
+        planos.map((plano) => {
           return (
             <Link
               style={{ textDecoration: 'none', color: 'white' }}
