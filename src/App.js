@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export default function App() {
   const [user, setUser] = useState(null)
-  const [form, setForm] = useState(null)
+  const [form, setForm] = useState({email: '', password: ''})
   const [cadastro, setCadastro] = useState(null)
   const [planos, setPlanos] = useState(null)
   const [plano, setPlano] = useState(null)
