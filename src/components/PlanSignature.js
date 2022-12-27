@@ -5,14 +5,28 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+// import perks from '../img/...'
 
 export default function PlanSignature() {
   const { planoId } = useParams()
-  const { creditCard, setCreditCard } = useContext(AuthContext)
+  const { creditCard, setCreditCard, planos } = useContext(AuthContext)
   const navigate = useNavigate()
 
+  const getPlanPrice = () => {
+    const selectedPlan = planos.filter(
+      (plan) => plan.id === parseInt(planoId, 10),
+    )[0]
+
+    return selectedPlan.price
+  }
+
   useEffect(() => {
-    document.getElementById('modal-confirm-assign').style.visibility = 'hidden'
+    if (planos === null) {
+      navigate('/')
+    } else {
+      document.getElementById('modal-confirm-assign').style.visibility =
+        'hidden'
+    }
   }, [])
 
   const confirmModalNo = () => {
@@ -54,13 +68,17 @@ export default function PlanSignature() {
     document.getElementById('modal-confirm-assign').style.visibility = 'visible'
   }
 
+  if (planos === null) return <></>
+
   return (
     <>
       <Container>
         <Modal id="modal-confirm-assign">
+          <CloseModal></CloseModal>
           <ModalContent>
             <ModalContentTitle>
-              Tem certeza que deseja assinar o plano Driven Plus (R$ 39,99)?
+              Tem certeza que deseja assinar o plano Driven Plus (R${' '}
+              {getPlanPrice()})?
             </ModalContentTitle>
             <ModalContentActions>
               <button
@@ -117,13 +135,23 @@ export default function PlanSignature() {
           </div>
 
           <button className="button-assign" type="submit">
-            <p>ASSINAR</p>
+            ASSINAR
           </button>
         </form>
       </Container>
     </>
   )
 }
+
+const CloseModal = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 270px;
+  width: 28px;
+  height: 24px;
+  background-color: white;
+  border-radius: 3px;
+`
 
 const Modal = styled.div`
   position: absolute;
@@ -212,15 +240,14 @@ const Container = styled.div`
     height: 52px;
     background: #ff4791;
     border-radius: 8px;
-    p {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 21px;
-      text-align: center;
-      color: #000000;
-    }
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: white;
   }
 
   .button-modal {
@@ -231,6 +258,12 @@ const Container = styled.div`
     border-radius: 8px;
     color: white;
     cursor: pointer;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
   }
 
   .button-modal-no {
