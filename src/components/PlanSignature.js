@@ -161,6 +161,7 @@ const CloseModal = styled.div`
   height: 24px;
   background-color: white;
   border-radius: 3px;
+  cursor: pointer;
 `
 
 const Modal = styled.div`
