@@ -31,7 +31,7 @@ const Login = () => {
       if (user.membership === null) {
         navigate('/subscriptions')
       } else {
-        navigate('/')
+        navigate('/home')
       }
     })
 
