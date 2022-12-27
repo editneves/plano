@@ -9,6 +9,8 @@ import price from "../img/price.png";
 import { useNavigate } from "react-router-dom";
 import PlanSignature from "../components/PlanSignature";
 import { BASE_URL } from "../constants/urls";
+import Seta from "../img/Seta.png";
+import { Link } from 'react-router-dom'
 
 export default function Cadastro() {
   const { plano, setPlano } = useContext(AuthContext);
@@ -39,6 +41,12 @@ export default function Cadastro() {
   return (
     <>
       <Container key={plano.id}>
+      <Link style={{ textDecoration: 'none', color: 'white' }}
+              to={`/subscriptions`}>
+      <ImgSeta src={Seta} alt="seta-voltar" />
+      </Link>
+       
+
         <PlanoDiv>
           <ImgPlano src={plano.image} alt="plan" />
           <Text>{plano.name} </Text>
@@ -68,11 +76,17 @@ export default function Cadastro() {
         </DadosPlano>
 
         <PlanSignature />
-
       </Container>
     </>
   );
 }
+
+const ImgSeta = styled.img`
+  margin-top: 24px;
+  margin-right:320px;
+  width: 28px;
+  height: 28px;
+`;
 
 const Text = styled.label`
   font-family: "Roboto";
@@ -100,7 +114,6 @@ const Container = styled.div`
   justify-content: flex-start;
 `;
 const PlanoDiv = styled.div`
-  margin-top: 40px;
   width: 299px;
   height: 133px;
   display: flex;
@@ -109,7 +122,7 @@ const PlanoDiv = styled.div`
   justify-content: center;
 `;
 const DadosPlano = styled.div`
-  margin-top: 40px;
+  margin-top: 10px;
   width: 299px;
   height: 184px;
   display: flex;
