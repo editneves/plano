@@ -82,7 +82,7 @@ const ImgUsuario = styled.img`
   height: 32px;
 `;
 const Topo = styled.div`
-  margin-top:22px;
+  margin-top: 22px;
   width: 299px;
   height: 50px;
   display: flex;
@@ -99,7 +99,7 @@ const Texto = styled.label`
   color: #ffffff;
 `;
 const Div = styled.div`
-  margin-top:53px;
+  margin-top: 53px;
   width: 299px;
   height: 400px;
   display: flex;
@@ -116,18 +116,16 @@ const ButtonBeneficios = styled.div`
   height: 52px;
   background: #ff4791;
   border-radius: 8px;
-  p {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: #ffffff;
-  }
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
 `;
 
 const DivButton = styled.div`
-  margin-bottom:12px;
+  margin-bottom: 12px;
   width: 299px;
   height: 112px;
   display: flex;
@@ -144,14 +142,12 @@ const ButtonMudar = styled.div`
   height: 52px;
   background: #ff4791;
   border-radius: 8px;
-  p {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: #ffffff;
-  }
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
 `;
 const ButtonCancelar = styled.div`
   display: flex;
@@ -162,12 +158,10 @@ const ButtonCancelar = styled.div`
   height: 52px;
   background: #ff4747;
   border-radius: 8px;
-  p {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: #ffffff;
-  }
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
 `;

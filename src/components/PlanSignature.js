@@ -91,7 +91,7 @@ export default function PlanSignature() {
                 onClick={confirmModalYes}
                 className="button-modal button-modal-yes"
               >
-                SIM
+                Sim
               </button>
             </ModalContentActions>
           </ModalContent>
