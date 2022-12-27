@@ -74,7 +74,7 @@ export default function PlanSignature() {
     <>
       <Container>
         <Modal id="modal-confirm-assign">
-          <CloseModal>
+          <CloseModal onClick={confirmModalNo}>
             <img
               src={closeModalImage}
               alt="close"
