@@ -45,7 +45,7 @@ export default function Cadastro() {
               to={`/subscriptions`}>
       <ImgSeta src={Seta} alt="seta-voltar" />
       </Link>
-       
+
 
         <PlanoDiv>
           <ImgPlano src={plano.image} alt="plan" />

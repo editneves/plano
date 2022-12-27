@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-// import perks from '../img/...'
+import closeModalImage from '../img/close-modal.png'
 
 export default function PlanSignature() {
   const { planoId } = useParams()
@@ -74,7 +74,17 @@ export default function PlanSignature() {
     <>
       <Container>
         <Modal id="modal-confirm-assign">
-          <CloseModal></CloseModal>
+          <CloseModal>
+            <img
+              src={closeModalImage}
+              alt="close"
+              style={{
+                width: '28px',
+                height: '24px',
+                backgroundColor: 'black',
+              }}
+            />
+          </CloseModal>
           <ModalContent>
             <ModalContentTitle>
               Tem certeza que deseja assinar o plano Driven Plus (R${' '}
@@ -145,8 +155,8 @@ export default function PlanSignature() {
 
 const CloseModal = styled.div`
   position: absolute;
-  top: 10px;
-  left: 270px;
+  top: 25px;
+  right: 20px;
   width: 28px;
   height: 24px;
   background-color: white;
