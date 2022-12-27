@@ -9,7 +9,6 @@ import price from "../img/price.png";
 import { useNavigate } from "react-router-dom";
 import PlanSignature from "../components/PlanSignature";
 import { BASE_URL } from "../constants/urls";
-import Test from "../components/Test";
 
 export default function Cadastro() {
   const { plano, setPlano } = useContext(AuthContext);
@@ -46,7 +45,9 @@ export default function Cadastro() {
         </PlanoDiv>
 
         <DadosPlano>
-          <SubTitle><ImgFig src={perks} alt="perks" /> Benefícios:</SubTitle>
+          <SubTitle>
+            <ImgFig src={perks} alt="perks" /> Benefícios:
+          </SubTitle>
 
           {plano.perks.map((p) => {
             return (
@@ -58,13 +59,16 @@ export default function Cadastro() {
             );
           })}
 
-          <SubTitle> <ImgFig src={price} alt="price" /> Preço:</SubTitle>
+          <SubTitle>
+            {" "}
+            <ImgFig src={price} alt="price" /> Preço:
+          </SubTitle>
 
           <Div>R$ {plano.price} cobrados mensalmente</Div>
         </DadosPlano>
 
         <PlanSignature />
-        
+
       </Container>
     </>
   );

@@ -4,7 +4,6 @@ import { BASE_URL } from "../constants/urls";
 import axios from "axios";
 import { useParams } from "react-router";
 import styled from "styled-components";
-import Test from "../components/Test"
 
 export default function PlanSignature() {
   const { planoId } = useParams();
@@ -81,9 +80,7 @@ export default function PlanSignature() {
             <p>ASSINAR</p>
           </button>
         </form>
-        
       </Container>
-      <Test/>
     </>
   );
 }
